@@ -2,7 +2,7 @@
 namespace App\Service;
 
 use PiPHP\GPIO\GPIO;
-use PiPHP\GPIO\Pin\InputPinInterface;
+use PiPHP\GPIO\Pin\PinInterface;
 
 class DHT11Manager {
 
