@@ -13,6 +13,10 @@ class TestDHT11Controller extends AbstractController
      */
     public function index(DHT11Manager $manager)
     {
-        return $this->json($manager->read());
+        return $this->json([
+            'all' => $manager->read(),
+            'temp' => $manager->getTemperature(),
+            'hum'  => $manager->getHumidity()
+        ]);
     }
 }
