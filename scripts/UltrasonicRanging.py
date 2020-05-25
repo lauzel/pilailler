@@ -1,4 +1,4 @@
-GPIO.setwarnings(False)#!/usr/bin/env python3
+#!/usr/bin/env python3
 ########################################################################
 # Filename    : UltrasonicRanging.py
 # Description : Get distance via UltrasonicRanging sensor
