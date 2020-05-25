@@ -64,7 +64,7 @@ class Metrics
     /**
      * @return mixed
      */
-    public function getCreatedAt()
+    public function getcreated_at()
     {
         return $this->created_at;
     }

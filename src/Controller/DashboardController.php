@@ -18,8 +18,13 @@ class DashboardController extends AbstractController
            'created_at' => 'DESC'
         ]);
 
-        return $this->render('base.html.twig', [
-            'metric' => $lastMetric
+        $metrics = $repository->findBy([], [
+            'created_at' => 'DESC'
+        ]);
+
+        return $this->render('dashboard.html.twig', [
+            'lastMetric' => $lastMetric,
+            'metrics' => $metrics
         ]);
     }
 }

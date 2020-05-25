@@ -48,6 +48,134 @@ $(function () {
   /* jQueryKnob */
   $('.knob').knob()
 
+  var $tempChart = $('#temp-chart')
+  // let xAxis = JSON.parse($tempChart.dataset.xAxis)
+  // let yAxis = JSON.parse($tempChart.dataset.yAxis)
+  var xAxis = $tempChart.data("xAxis")
+  var yAxis = $tempChart.data("yAxis")
+  var ctx = $tempChart.find('canvas')
+
+
+  var ticksStyle = {
+    fontColor: '#495057',
+    fontStyle: 'bold'
+  }
+
+  var mode      = 'index'
+  var intersect = true
+
+
+  var tempChart  = new Chart(ctx, {
+    type   : 'line',
+    data   : {
+      labels  : xAxis,
+      datasets: [
+        {
+          label: 'Temperature',
+          backgroundColor: '#007bff',
+          borderColor    : '#007bff',
+          data           : yAxis,
+        },
+
+      ]
+    },
+    options: {
+      maintainAspectRatio: false,
+      tooltips           : {
+        mode     : mode,
+        intersect: intersect
+      },
+      hover              : {
+        mode     : mode,
+        intersect: intersect
+      },
+      legend             : {
+        display: false
+      },
+      scales             : {
+        yAxes: [{
+          // display: false,
+          gridLines: {
+            display      : true,
+            lineWidth    : '4px',
+            color        : 'rgba(0, 0, 0, .2)',
+            zeroLineColor: 'transparent'
+          },
+          ticks    : $.extend({
+            beginAtZero : true,
+            suggestedMax: 40
+          }, ticksStyle)
+        }],
+        xAxes: [{
+          display  : true,
+          gridLines: {
+            display: false
+          },
+          ticks    : ticksStyle
+        }]
+      }
+    }
+  })
+
+  var $humidityChart = $('#humidity-chart')
+  // let xAxis = JSON.parse($tempChart.dataset.xAxis)
+  // let yAxis = JSON.parse($tempChart.dataset.yAxis)
+   xAxis = $humidityChart.data("xAxis")
+   yAxis = $humidityChart.data("yAxis")
+   ctx = $humidityChart.find('canvas')
+
+  var humidityChart  = new Chart(ctx, {
+    type   : 'line',
+    data   : {
+      labels  : xAxis,
+      datasets: [
+        {
+          label: 'Humidité',
+          backgroundColor: '#007bff',
+          borderColor    : '#007bff',
+          data           : yAxis,
+        },
+
+      ]
+    },
+    options: {
+      maintainAspectRatio: false,
+      tooltips           : {
+        mode     : mode,
+        intersect: intersect
+      },
+      hover              : {
+        mode     : mode,
+        intersect: intersect
+      },
+      legend             : {
+        display: false
+      },
+      scales             : {
+        yAxes: [{
+          // display: false,
+          gridLines: {
+            display      : true,
+            lineWidth    : '4px',
+            color        : 'rgba(0, 0, 0, .2)',
+            zeroLineColor: 'transparent'
+          },
+          ticks    : $.extend({
+            beginAtZero : true,
+            suggestedMax: 40
+          }, ticksStyle)
+        }],
+        xAxes: [{
+          display  : true,
+          gridLines: {
+            display: false
+          },
+          ticks    : ticksStyle
+        }]
+      }
+    }
+  })
+
   // jvectormap data
   var visitorsData = {
     'US': 398, //USA

@@ -31,7 +31,7 @@ class MetricsCommand extends Command
         $this
             ->setDescription('Add a short description for your command')
             ->addArgument('arg1', InputArgument::OPTIONAL, 'Argument description')
-            ->addOption('option1', null, InputOption::VALUE_NONE, 'Option description')
+            ->addOption('mock', null, InputOption::VALUE_OPTIONAL, 'Mock options')
         ;
     }
 
@@ -47,7 +47,14 @@ class MetricsCommand extends Command
     {
         $io = new SymfonyStyle($input, $output);
 
-        $data = $this->dht11Manager->read();
+        if($input->getOption('mock')) {
+            $data = [
+                'humidity' => rand(60, 80),
+                'temperature' => rand(18,30)
+            ];
+        } else {
+            $data = $this->dht11Manager->read();
+        }
 
         $metric = new Metrics();
         $metric->setCreatedAt(new \DateTime('now'));
