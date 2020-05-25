@@ -59,9 +59,6 @@ class DashboardController extends AbstractController
         $output = new BufferedOutput();
         $application->run($input, $output);
 
-        dump($output->fetch());die;
-
         return $this->redirectToRoute('dashboard');
-
     }
 }
